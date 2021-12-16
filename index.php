@@ -1,9 +1,13 @@
-% rebase('views/templates/base.tlp')
+<head>
+    <link rel="stylesheet" type="text/css" href="semantic/Semantic-UI-CSS-master/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="semantic/Semantic-UI-CSS-master/semantic.min.js"></script>
+</head>
 <body class="pushable">
 <!-- menu -->
     <div class="ui left fixed vertical menu" style="width: 350px">
         <div class="item">
-            <img class="ui centered medium image" src="static/images/logo.png" style="width: 200px">
+            <img class="ui centered medium image" src="images/logo.png" style="width: 200px">
         </div>
         <a class="item">
             <div class="ui input">
