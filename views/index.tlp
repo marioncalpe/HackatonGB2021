@@ -1,36 +1,47 @@
 % rebase('views/templates/base.tlp')
 <body class="pushable">
-<!-- menu -->
-    <div class="ui left fixed vertical menu" style="width: 350px">
-        <div class="item">
-            <img class="ui centered medium image" src="static/images/logo.png" style="width: 200px">
-        </div>
-        <a class="item">
-            <div class="ui input">
-                <input type="text" placeholder="Rechercher..." data-dashlane-rid="60dbcfb35260c84a" data-form-type="">
-            </div>
-            <button class="fluid ui button">Examiner</button>
-        </a>
-        <a class="item">Description
-            <div class="ui placeholder">
-                <div class="full line"></div>
-                <div class="very long line"></div>
-                <div class="long line"></div>
-                <div class="medium line"></div>
-                <div class="short line"></div>
-                <div class="very short line"></div>
-            </div>
-        </a>
-        <div class="ui bottom fixed menu">
-            <a class="item">
-                <div class="ui progress">
-                    <div class="bar">
-                        <div class="progress"></div>
-                    </div>
+    <div class="ui two column stackable grid">
+        <div class="column" style="width: 350px">
+                <!-- menu -->
+            <div class="ui left fixed vertical menu" style="width: 350px">
+                <div class="item">
+                    <img class="ui centered medium image" src="static/images/logo.png" style="width: 200px">
                 </div>
-            </a>
+                <a class="item">
+                    <div class="ui input">
+                        <input type="text" placeholder="Rechercher..." data-dashlane-rid="60dbcfb35260c84a" data-form-type="">
+                    </div>
+                    <button class="fluid ui button">Examiner</button>
+                </a>
+                <a class="item">Description
+                    <div class="ui placeholder">
+                        <div class="full line"></div>
+                        <div class="very long line"></div>
+                        <div class="long line"></div>
+                        <div class="medium line"></div>
+                        <div class="short line"></div>
+                        <div class="very short line"></div>
+                    </div>
+                </a>
+                <div class="ui bottom fixed menu">
+                    <a class="item">
+                        <div class="ui progress">
+                            <div class="bar">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="column" style="width: 75%;">
+          <div class="ui segment">
+            <iframe src="static/pagePreview/temp.html" style="width: 100%;height: 800px;"></iframe>
+          </div>
+        </div>
+
+      </div>
+
     <p></p>
     <p></p>
 </body>
