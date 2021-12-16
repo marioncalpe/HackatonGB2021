@@ -1,0 +1,2 @@
+% rebase('views/templates/base.tlp')
+<h1>Hello World!!</h1>
