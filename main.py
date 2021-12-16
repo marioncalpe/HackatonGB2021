@@ -1,5 +1,5 @@
 import bottle
-from test import Test
+from HTMLAnalyser import Test
 
 app = bottle.Bottle()
 
