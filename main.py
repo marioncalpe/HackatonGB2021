@@ -9,10 +9,10 @@ def serv_static(filename:str):
 
 @app.route('/')
 def index():
-    content = Test('https://www.google.com')
+    content = Test('https://www.google.com/')
     content = content.get_raw_html()
 
-    with open("temp.html", 'w') as file:
+    with open("temp.html", 'w', encoding="utf-8") as file:
         file.write(content)
         file.close()
 
