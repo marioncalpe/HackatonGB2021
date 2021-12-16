@@ -44,7 +44,19 @@ class HTMLAnalyser:
         bg = "#ffffff"
         fg = "#000000"
 
-        if self.__css_properties.__contains__('body'):
+        if self.__css_properties.__contains__('*'):
+            if self.__css_properties['*'].__contains__('background-color'):
+                bg = self.__css_properties['*']['background-color']
+            
+            if self.__css_properties['body'].__contains__('color'):
+                fg = self.__css_properties['body']['color']
+        elif self.__css_properties.__contains__('html'):
+            if self.__css_properties['html'].__contains__('background-color'):
+                bg = self.__css_properties['html']['background-color']
+            
+            if self.__css_properties['body'].__contains__('color'):
+                fg = self.__css_properties['body']['color']
+        elif self.__css_properties.__contains__('body'):
             if self.__css_properties['body'].__contains__('background-color'):
                 bg = self.__css_properties['body']['background-color']
             
