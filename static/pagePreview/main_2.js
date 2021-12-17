@@ -5,7 +5,7 @@ console.log("salut")
 
 var w_data = new Array();
 var moy
-
+var myTxtNodes
 const parser =  function(){
     
     $("#pageContent").on('load', function(){
@@ -27,6 +27,8 @@ const parser =  function(){
           return node.firstElementChild==null && node.firstChild!= null && node.nodeName !="SCRIPT" && node.nodeName !="TITLE" && node.nodeName !="STYLE" && node.innerText !="" && node.firstChild.nodeType == 3 ;
       })
       
+      myTxtNodes = textNodes
+
       var data = new Array();
       var percArray = new Array();
 
@@ -188,10 +190,14 @@ reFormHtmlFile = function(){
 
           const nodes = fHtml[0].all;
 
-        console.log('nodes ', nodes);
-        console.log('node 76 ', nodes[75]);
-        console.log("TEST moy ",moy)
-        console.log("TEST data ",w_data)
+          console.log("")
+
+         /* for (let i = 0; i < nodes.length; i++) {
+           
+            $(myTxtNodes[75]).css({'border-style' : 'solid'});
+            $(myTxtNodes[75]).css({'border-color' : 'red'});
+          }*/
+
 
       })
 }
