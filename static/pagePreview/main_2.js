@@ -59,11 +59,13 @@ const parser =  function(){
       for (let i = 0; i < nodes.length; i++) {
         for (let j = 0; j < textNodes.length; j++) {
           if(nodes[i].innerHTML == textNodes[j].innerHTML){
-            $(nodes[i]).css({'border-style' : 'solid'});
-            $(nodes[i]).css({'border-color' : 'red'});
-
+            
             var perc = data[j] && data[j]['ratio'] || 100
             perc = perc.toFixed(2);
+
+            let color = (perc >= 80)?'green':(perc >= 50)?'orange':'red';
+            $(nodes[i]).css({'border-style' : 'solid'});
+            $(nodes[i]).css({'border-color' : color});
             var perDiv = "<div style=\"color : #fff; position: absolute; left : -20 px !important; background-color :#5B67EF; \">"+perc+"</div>"
             nodes[i].outerHTML = nodes[i].outerHTML + perDiv
           }
