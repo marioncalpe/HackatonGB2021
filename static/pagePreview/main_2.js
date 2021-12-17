@@ -5,6 +5,7 @@ console.log("salut")
 
 var w_data = new Array();
 var moy
+var myTxtNodes
 
 const parser =  function(){
     
@@ -26,7 +27,7 @@ const parser =  function(){
           }*/
           return node.firstElementChild==null && node.firstChild!= null && node.nodeName !="SCRIPT" && node.nodeName !="TITLE" && node.nodeName !="STYLE" && node.innerText !="" && node.firstChild.nodeType == 3 ;
       })
-      
+      myTxtNodes = textNodes
       var data = new Array();
       var percArray = new Array();
 
@@ -58,7 +59,9 @@ const parser =  function(){
           total += percArray[i];
       }
       var avg = total / percArray.length;
+      avg = avg.toFixed(2);
       moy = avg
+      
       console.log("MY MOY ",avg)
 
     function luminance(r, g, b) {
@@ -192,10 +195,20 @@ reFormHtmlFile = function(){
 
           const nodes = fHtml[0].all;
 
-        console.log('nodes ', nodes);
-        console.log('node 76 ', nodes[75]);
-        console.log("TEST moy ",moy)
-        console.log("TEST data ",w_data)
+          //console.log('nodes ', nodes);
+
+          console.log("My nodes length", myTxtNodes.length)
+
+          for (let i = 0; i < nodes.length; i++) {
+            for (let j = 0; j < myTxtNodes.length; j++) {
+              if(nodes[i].innerHTML == myTxtNodes[j].innerHTML){
+                $(nodes[i]).css({'border-style' : 'solid'});
+                $(nodes[i]).css({'border-color' : 'red'});
+              }
+            }
+          }
+
+          console.log("Data length", w_data.length)
 
       })
 }
