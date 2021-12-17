@@ -3,17 +3,20 @@ console.log("salut")
 
 //alert('success : ' );
 
+var w_data = new Array();
+var moy
+
 const parser =  function(){
     
     $("#pageContent").on('load', function(){
 
         let fHtml = $("#pageContent").contents().get();
 
-        console.log('frame ', fHtml);
+        //console.log('frame ', fHtml);
 
         const nodes = fHtml[0].all;
 
-       console.log('nodes ', nodes);
+      // console.log('nodes ', nodes);
 
       const textNodes = Array.from(nodes).filter(function(node){
           /*if(node.firstElementChild==null && node.firstChild!= null && node.nodeName !="SCRIPT" && node.nodeName !="TITLE" && node.nodeName !="STYLE"){
@@ -23,7 +26,7 @@ const parser =  function(){
           }*/
           return node.firstElementChild==null && node.firstChild!= null && node.nodeName !="SCRIPT" && node.nodeName !="TITLE" && node.nodeName !="STYLE" && node.innerText !="" && node.firstChild.nodeType == 3 ;
       })
-
+      
       var data = new Array();
       var percArray = new Array();
 
@@ -48,13 +51,14 @@ const parser =  function(){
         }
       }
 
-
+      w_data = data
       console.log("MY ARRAY ",data)
       var total = 0;
       for(var i = 0; i < percArray.length; i++) {
           total += percArray[i];
       }
       var avg = total / percArray.length;
+      moy = avg
       console.log("MY MOY ",avg)
 
     function luminance(r, g, b) {
@@ -102,6 +106,7 @@ const parser =  function(){
         return result
     }
 
+    /*
       console.log("nodes filtred :",textNodes)
 
       console.log("first element  : ", textNodes[4])
@@ -115,7 +120,7 @@ const parser =  function(){
       const rgba2hex = (rgba) => `#${rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+\.{0,1}\d*))?\)$/).slice(1).map((n, i) => (i === 3 ? Math.round(parseFloat(n) * 255) : parseFloat(n)).toString(16).padStart(2, '0').replace('NaN', '')).join('')}`
       console.log("first element text color HEX: |", rgb2hex( theColorIs),"|")
       console.log("first element text color RGBA: |", theColorIs,"|")
-      console.log("BG Color |",rgb2hex(bgColor),"|")
+      console.log("BG Color |",rgb2hex(bgColor),"|")*/
 
       function rgb2hex(rgb){
         rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
@@ -130,7 +135,7 @@ const parser =  function(){
 
           var strFirstThree = bg.substring(0,4);
           var lastChar = strFirstThree.substr(strFirstThree.length - 1);
-          console.log("Alpha  :",getAlpha($(node).css('background-color')))
+          //console.log("Alpha  :",getAlpha($(node).css('background-color')))
 
           if(lastChar=="a"){
           }
@@ -171,7 +176,27 @@ const parser =  function(){
     })
 }
 
+
 parser()
+
+reFormHtmlFile = function(){
+  $("#pageContent").on('load', function(){
+
+          let fHtml = $("#pageContent").contents().get();
+
+          console.log('frame ', fHtml);
+
+          const nodes = fHtml[0].all;
+
+        console.log('nodes ', nodes);
+        console.log('node 76 ', nodes[75]);
+        console.log("TEST moy ",moy)
+        console.log("TEST data ",w_data)
+
+      })
+}
+
+reFormHtmlFile()
 /*
 var HTMLStr;
 var val;
