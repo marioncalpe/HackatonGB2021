@@ -179,7 +179,44 @@ const parser =  function(){
       progressEl.style.width = moy+"%";
       progressEl.children[0].innerText = moy+"%";
        
+      let links = w_data.filter(row => row.node.nodeName == 'A'),
+          h1 = w_data.filter(row => row.node.nodeName == 'H1'),
+          h2 = w_data.filter(row => row.node.nodeName == 'H2'),
+          h3 = w_data.filter(row => row.node.nodeName == 'H3'),
+          p = w_data.filter(row => row.node.nodeName == 'P');
 
+      var avrLinks = 0;
+      var avrH1 = 0;
+      var avrH2 = 0;
+      var avrH3 = 0;
+      var avrP = 0;
+      for (const l of links) {
+        avrLinks += l.ratio;
+      }
+      for (const l of h1) {
+        avrH1 += l.ratio;
+      }
+      for (const l of h2) {
+        avrH2 += l.ratio;
+      }
+      for (const l of h3) {
+        avrH3 += l.ratio;
+      }
+      for (const l of p) {
+        avrP += l.ratio;
+      }
+      
+      avrLinks = avrLinks/links.length;
+      avrH1 = avrH1/h1.length;
+      avrH2 = avrH2/h2.length;
+      avrH3 = avrH3/h3.length;
+      avrP = avrP/p.length;
+
+      document.getElementById('a').innerText = Math.floor(avrLinks) + "%";
+      document.getElementById('h1').innerText = Math.floor(avrH1) + "%";
+      document.getElementById('h2').innerText = Math.floor(avrH2) + "%";
+      document.getElementById('h3').innerText = Math.floor(avrH3) + "%";
+      document.getElementById('p').innerText = Math.floor(avrP) + "%";
     })
 }
 

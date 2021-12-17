@@ -15,21 +15,11 @@
                 </form>
                 <a class="item">Description
                     <div class="ui list">
-                        <div class="item">Pommes</div>
-                        <div class="item">Poires</div>
-                        <div class="item">Oranges</div>
-                        <div class="item">Pommes</div>
-                        <div class="item">Poires</div>
-                        <div class="item">Oranges</div>
-                        <div class="item">Pommes</div>
-                        <div class="item">Poires</div>
-                        <div class="item">Oranges</div>
-                        <div class="item">Pommes</div>
-                        <div class="item">Poires</div>
-                        <div class="item">Oranges</div>
-                        <div class="item">Pommes</div>
-                        <div class="item">Poires</div>
-                        <div class="item">Oranges</div>
+                        <div class="item">Moyenne liens: <span id="a">%</span></div>
+                        <div class="item">Moyenne Header 1: <span id="h1">%</span></div>
+                        <div class="item">Moyenne Header 2: <span id="h2">%</span></div>
+                        <div class="item">Moyenne Header 3: <span id="h3">%</span></div>
+                        <div class="item">Moyenne Paragraphe: <span id="p">%</span></div>
                     </div>
                 </a>
                 <a class="item">
