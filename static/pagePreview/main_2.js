@@ -5,7 +5,7 @@ console.log("salut")
 
 const parser =  function(){
     
-    $("#pageContent").on('load', async function(){
+    $("#pageContent").on('load', function(){
 
         let fHtml = $("#pageContent").contents().get();
 
@@ -25,6 +25,8 @@ const parser =  function(){
       })
 
       var data = new Array();
+      var percArray = new Array();
+
       for (let i = 0; i < textNodes.length; i++) {
 
         mystyle = getComputedStyle(textNodes[i]);
@@ -32,19 +34,56 @@ const parser =  function(){
 
         var bgColor = getComputedBG(textNodes[i]);
 
-        var ratio= await apiRequest(rgb2hex(textcolor), rgb2hex(bgColor)).then(function (value) {
+        /*var ratio= await apiRequest(rgb2hex(textcolor), rgb2hex(bgColor)).then(function (value) {
           return value
-        })
-
+        })*/
+        var ratio = contrast(rgb2hex(textcolor),rgb2hex(bgColor))
+        var perc = (ratio*100)/21
+        percArray.push(perc)
         data[i] = {
           "node" : textNodes[i],
           "text-color" : rgb2hex(textcolor),
           "bg-color" : rgb2hex(bgColor),
-          "ratio":  ratio
+          "ratio":  perc
         }
       }
 
+
       console.log("MY ARRAY ",data)
+      var total = 0;
+      for(var i = 0; i < percArray.length; i++) {
+          total += percArray[i];
+      }
+      var avg = total / percArray.length;
+      console.log("MY MOY ",avg)
+
+    function luminance(r, g, b) {
+        var a = [r, g, b].map(function (v) {
+            v /= 255;
+            return v <= 0.03928
+                ? v / 12.92
+                : Math.pow( (v + 0.055) / 1.055, 2.4 );
+        });
+        return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+    }
+    function contrast(rgb1, rgb2) {
+        var lum1 = luminance(hexToRgb(rgb1).r, hexToRgb(rgb1).g, hexToRgb(rgb1).b);
+        var lum2 = luminance(hexToRgb(rgb2).r, hexToRgb(rgb2).g, hexToRgb(rgb2).b);
+        var brightest = Math.max(lum1, lum2);
+        var darkest = Math.min(lum1, lum2);
+        return (brightest + 0.05)
+             / (darkest + 0.05);
+    }
+
+    function hexToRgb(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+
 
       async function apiRequest(foreground, background) {
         const apiUrl = "https://webaim.org/resources/contrastchecker/?fcolor="+foreground+"&bcolor="+background+"&api";
