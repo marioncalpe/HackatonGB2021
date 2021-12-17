@@ -41,9 +41,9 @@
                 </a>
             </div>
         </div>
-        <div class="column" style="width: 75%;">
+        <div class="column" style="width: 82%;">
           <div class="ui segment">
-            <iframe src="static/pagePreview/temp.html" id="pageContent" style="width: 100%;height: 800px;"></iframe>
+            <iframe src="static/pagePreview/temp.html" id="pageContent" style="width: 100%;height: 850px;"></iframe>
           </div>
         </div>
 
