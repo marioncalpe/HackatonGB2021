@@ -7,6 +7,12 @@ cssutils.log.setLevel(logging.CRITICAL)
 
 class Test:
     def __init__(self, url:str):
+        """Class constructor
+
+        :param url: The web page to retrieve
+        :type url: str
+        :raises ConnectionError: If unable to retrieve the web page
+        """
         self.__base_url = url
         response = requests.get(self.__base_url)
 
