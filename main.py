@@ -9,7 +9,8 @@ def serv_static(filename:str):
 
 @app.route('/')
 def index():
-    content = Test('https://www.lequipe.fr/')
+    #Hackathon page : https://actu.universita.corsica/plugins/actu/actu-front.php?id_site=institutionnel&id=7698
+    content = Test('https://actu.universita.corsica/plugins/actu/actu-front.php?id_site=institutionnel&id=7698')
     content = content.get_raw_html()
 
     with open("static/pagePreview/temp.html", 'w', encoding="utf-8") as file:
