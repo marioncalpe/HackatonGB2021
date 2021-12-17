@@ -170,7 +170,11 @@ const parser =  function(){
        }
 
        
-
+       //OUTPUT
+      
+      let progressEl = $('.ui.progress .bar')[0];
+      progressEl.style.width = moy+"%";
+      progressEl.children[0].innerText = moy+"%";
        
 
     })
