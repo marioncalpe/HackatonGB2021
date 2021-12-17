@@ -7,12 +7,12 @@
                 <div class="item">
                     <img class="ui centered medium image" src="static/images/logo.png" style="width: 200px">
                 </div>
-                <a class="item">
+                <form method="post" action="/" class="item">
                     <div class="ui input">
-                        <input type="text" placeholder="Rechercher..." data-dashlane-rid="60dbcfb35260c84a" data-form-type="">
+                        <input type="text" placeholder="Rechercher..." data-dashlane-rid="60dbcfb35260c84a" data-form-type="" name="url">
                     </div>
-                    <button class="fluid ui button">Examiner</button>
-                </a>
+                    <button role="submit" class="fluid ui button">Examiner</button>
+                </form>
                 <a class="item">Description
                     <div class="ui placeholder">
                         <div class="full line"></div>
