@@ -10,6 +10,7 @@ def serv_static(filename:str):
 
 @app.route('/', method='POST')
 def analyse_page():
+    #Hackathon page : https://actu.universita.corsica/plugins/actu/actu-front.php?id_site=institutionnel&id=7698
     url = bottle.request.forms.get('url')
     if validators.url(url):
         try:
