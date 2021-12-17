@@ -50,8 +50,54 @@ const parser =  function(){
           "bg-color" : rgb2hex(bgColor),
           "ratio":  perc
         }
+
+        perc = perc.toFixed(2);
+
+
       }
 
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = 0; j < textNodes.length; j++) {
+          if(nodes[i].innerHTML == textNodes[j].innerHTML){
+            $(nodes[i]).css({'border-style' : 'solid'});
+            $(nodes[i]).css({'border-color' : 'red'});
+
+            var perc = data[j] && data[j]['ratio'] || 100
+            perc = perc.toFixed(2);
+            var perDiv = "<div style=\"color : #fff; position: absolute; left : -20 px !important; background-color :#5B67EF; \">"+perc+"</div>"
+            nodes[i].outerHTML = nodes[i].outerHTML + perDiv
+          }
+        }
+      }
+
+      /*
+            // REFORM HTML
+
+      
+                const nodes = fHtml[0].all;
+      
+                //console.log('nodes ', nodes);
+      
+                console.log("My nodes length", textNodes.length)
+
+                console.log("DATA :", data)
+      
+                for (let i = 0; i < nodes.length; i++) {
+                  for (let j = 0; j < textNodes.length; j++) {
+                    if(nodes[i].innerHTML == textNodes[j].innerHTML){
+                      $(nodes[i]).css({'border-style' : 'solid'});
+                      $(nodes[i]).css({'border-color' : 'red'});
+
+                      var perc = data[i] && data[i]['ratio'] || 100
+                      perc = perc.toFixed(2);
+                      var perDiv = "<div style=\"color : #fff; position: absolute; left : -20 px !important; background-color :#5B67EF; \">"+perc+"</div>"
+                      nodes[i].outerHTML = nodes[i].outerHTML + perDiv
+                    }
+                  }
+                }
+      
+                console.log("Data length", w_data.length)
+      */
       w_data = data
       console.log("MY ARRAY ",data)
       var total = 0;
@@ -63,6 +109,10 @@ const parser =  function(){
       moy = avg
       
       console.log("MY MOY ",avg)
+
+      /** */
+
+
 
     function luminance(r, g, b) {
         var a = [r, g, b].map(function (v) {
@@ -217,40 +267,16 @@ const parser =  function(){
       document.getElementById('h2').innerText = Math.floor(avrH2) + "%";
       document.getElementById('h3').innerText = Math.floor(avrH3) + "%";
       document.getElementById('p').innerText = Math.floor(avrP) + "%";
+
+
+
     })
 }
 
 
 parser()
 
-reFormHtmlFile = function(){
-  $("#pageContent").on('load', function(){
 
-          let fHtml = $("#pageContent").contents().get();
-
-          console.log('frame ', fHtml);
-
-          const nodes = fHtml[0].all;
-
-          //console.log('nodes ', nodes);
-
-          console.log("My nodes length", myTxtNodes.length)
-
-          for (let i = 0; i < nodes.length; i++) {
-            for (let j = 0; j < myTxtNodes.length; j++) {
-              if(nodes[i].innerHTML == myTxtNodes[j].innerHTML){
-                $(nodes[i]).css({'border-style' : 'solid'});
-                $(nodes[i]).css({'border-color' : 'red'});
-              }
-            }
-          }
-
-          console.log("Data length", w_data.length)
-
-      })
-}
-
-reFormHtmlFile()
 /*
 var HTMLStr;
 var val;
